@@ -98,6 +98,18 @@ This means that once you launch the (reverse/bind) shell thread, you lose access
 
 Threading is still super relevant for specific functions that don't need console I/O and that you can leave running in the background (network scanning, implant writing to backdoor bootloader/firmware, gdb server, ...).
 
+## Firmware Implants (Persistence)
+
+The `inject.py` script can be used to inject custom shellcode in an unpacked firmware file by overwriting a given section.
+
+```
+./inject.py firmware.bin ~/git/ecoshell/bindshell_thread.bin 0x805f4434 0x805f4b28
+Available space: 1780 bytes
+Overwriting firmware file with shellcode.
+```
+
+More details on persistence with firmware implants can be found in [Broadcom eCos | Gaining Persistence with Firmware Implants](https://ecos.wtf/2021/03/15/ecos-persistence-firmware)
+
 ## Credits
 
 - Makefile and linker file inspired from [https://github.com/stdw/cm-sdr](https://github.com/stdw/cm-sdr)
